@@ -1,0 +1,292 @@
+/* Reset globale */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: auto;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+    /* assicura che riempia tutto lo schermo */
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+}
+
+.title-bar-home {
+    width: 100%;
+    color: #FAFAFA;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    padding: 20px;
+    z-index: 1000;
+    /* sopra tutti gli altri elementi */
+}
+
+
+/* Card singola */
+.note-card {
+    color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    border: solid 4px #1FB655;
+    ;
+    padding: 10px;
+    width: 200px;
+    height: 150px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.note-card:hover {
+    transform: scale(1.02);
+}
+
+.note-title {
+    margin: 0 0 8px;
+    font-size: 1.1em;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    /* nasconde il testo in eccesso */
+    text-overflow: ellipsis;
+    /* aggiunge i puntini (…) alla fine */
+
+}
+
+.note-content {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    word-wrap: break-word;
+}
+
+/*
+.btn-column {
+    display: flex;
+    width: 200px; 
+    height: 150px;     
+    flex-shrink: 0; 
+    align-items: center;
+    justify-content: center;
+}*/
+
+.screen-editor {
+    flex-basis: 80%;
+    /* L'editor occupa metà schermo */
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    transition: flex-basis 0.3s ease;
+    height: 100%;
+    box-sizing: border-box;
+    flex-shrink: 1;
+}
+
+.main-container {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 20px;
+    align-items: flex-start;
+}
+
+.note-container {
+    flex: 1;
+    /* occupa spazio disponibile */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    overflow-y: auto;
+    /* permette lo scroll verticale */
+    overflow-x: hidden;
+    /* evita lo scroll orizzontale */
+    max-height: 100%;
+    /* non supera l’altezza dell’editor */
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.edit-note-card {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.title-input {
+    width: 100%;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    box-sizing: border-box;
+    color: black;
+    background-color: transparent;
+    font-size: 1.1em;
+}
+
+.note-title-bar {
+    display: flex;
+    justify-content: space-between;
+    /* spazio tra titolo e bottone */
+    align-items: center;
+    /* allineamento verticale */
+    margin-bottom: 10px;
+    /* spazio sotto la barra del titolo */
+}
+
+.text-input {
+    width: 100%;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    box-sizing: border-box;
+    color: black;
+    height: 100%;
+    background-color: transparent;
+    resize: none;
+}
+
+.text-input:focus,
+.title-input:focus {
+    outline: none;
+    border: none;
+}
+
+.bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    /* uno a sx, l'altro a dx */
+    align-items: center;
+    /* allineamento verticale */
+    padding: 10px 0;
+    width: 100%;
+    /* prende tutta la larghezza */
+    box-sizing: border-box;
+}
+
+.close-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: transform 0.2s;
+}
+
+.save-button {
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+    background-color: transparent;
+    border: none;
+    transition: transform 0.2s;
+}
+
+.delete-button {
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+    background-color: transparent;
+    border: none;
+    transition: transform 0.2s;
+}
+
+/* Bottone aggiungi nota */
+.add-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #1FB655;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    width: 80px;
+    height: 80px;
+    font-size: 1em;
+    /* grandezza icona */
+    display: flex;
+    /* FLEX per centrare l’icona */
+    align-items: center;
+    /* centraggio verticale */
+    justify-content: center;
+    /* centraggio orizzontale */
+    transition: transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.close-button:focus,
+.save-button:focus,
+.delete-button:focus,
+.add-button:focus {
+    outline: none;
+    border: none;
+}
+
+.close-button:active,
+.save-button:active,
+.delete-button:active,
+.add-button:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.close-button:hover,
+.save-button:hover,
+.delete-button:hover {
+    transform: scale(1.10);
+    outline: none;
+}
+
+.add-button:hover {
+    transform: scale(1.10);
+    outline: none;
+    background-color: #25c75c;
+    box-shadow: 0 8px 12px rgba(0,0,0,0.4);
+}
+
+.save-button:disabled:hover {
+    transform: none;
+    cursor: default
+}
+
+.save-button:disabled {
+    transform: none;
+    cursor: default
+}
+
+.highlight {
+    transform: scale(1.10);
+}
