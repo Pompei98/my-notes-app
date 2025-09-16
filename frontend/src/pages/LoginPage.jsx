@@ -1,7 +1,7 @@
 import './LoginPage.css';
 import React from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function LoginPage() {
   const apiUrl = import.meta.env.VITE_API_URL;
