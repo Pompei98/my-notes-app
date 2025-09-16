@@ -46,7 +46,7 @@ function HomePage() {
     const handleClickSave = () => {
         if (!selectedNote) return;
         const method = selectedNote.idNota ? 'PUT' : 'POST';
-        const url = selectedNote.idNota ? `${process.env.REACT_APP_API_URL}/note/${selectedNote.idNota}` : `${process.env.REACT_APP_API_URL}/note`
+        const url = selectedNote.idNota ? `${apiUrl}/note/${selectedNote.idNota}` : `${apiUrl}/note`
         fetch(url, {
             method: method,
             headers: {

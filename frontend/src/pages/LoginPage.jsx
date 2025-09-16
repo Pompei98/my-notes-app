@@ -41,9 +41,9 @@ function LoginPage() {
         <input type="text" onChange={onChangeUsername} placeholder='Username' className='login-input' required />
         <input type="password" onChange={onChangePassword} placeholder='Password' className='login-input' required />
         <button type="submit" className="login-button">Login</button>
-        <p>or</p>
-        <Link to="/register">Register</Link>
       </form>
+      <p>or</p>
+      <Link to="/register">Register</Link>
     </div>
   );
 }
