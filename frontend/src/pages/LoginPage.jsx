@@ -18,30 +18,32 @@ function LoginPage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     const res = await fetch(`${apiUrl}/auth/login`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ username, password }),
-  });
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    });
 
-    if(res.ok) {
+    if (res.ok) {
       const data = await res.json();
       localStorage.setItem('token', data.token);
       navigate('/home');
-    } else{
-        alert('none');
+    } else {
+      alert('none');
     }
   }
 
 
   return (
-    <div className='login-page'>
-        <form className='login-form' onSubmit = {handleLogin}>
-                <input type='text' onChange = {onChangeUsername} placeholder='Username' className='login-input' required/>
-                <input type='password' onChange = {onChangePassword} placeholder='Password' className='login-input' required/>
-            <button type='submit' className='login-button'>Accedi</button>
-        </form>
+    <div className="login-page">
+      <form className="login-form" onSubmit={handleLogin}>
+        <input type="text" onChange={onChangeUsername} placeholder='Username' className='login-input' required />
+        <input type="password" onChange={onChangePassword} placeholder='Password' className='login-input' required />
+        <button type="submit" className="login-button">Login</button>
+        <p>or</p>
+        <Link to="/register">Register</Link>
+      </form>
     </div>
   );
 }
