@@ -2,6 +2,8 @@ package it.ap.notesapp.controller;
 
 import it.ap.notesapp.entity.Utente;
 import it.ap.notesapp.services.JwtService;
+import it.ap.notesapp.services.UtenteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,6 +20,8 @@ import java.util.Map;
 public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
+    @Autowired
+    private UtenteService utenteService;
 
     public AuthController(AuthenticationManager authenticationManager, JwtService jwtService) {
         this.authenticationManager = authenticationManager;
@@ -43,8 +47,9 @@ public class AuthController {
         return ResponseEntity.ok(res);
     }
 
-    /*@PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequest registerRequest){
-
-    }*/
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody Utente registerRequest){
+        utenteService.createUtente(registerRequest);
+        return ResponseEntity.ok("Ok");
+    }
 }

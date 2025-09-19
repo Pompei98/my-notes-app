@@ -40,4 +40,6 @@ public class UtenteService {
         }
         return new User(utente.getUsername(), utente.getPassword(), List.of(new SimpleGrantedAuthority("ROLE_USER")));
     }
+
+    public Utente createUtente(Utente utente) {return utenteRepository.save(utente);}
 }
