@@ -37,13 +37,15 @@ function LoginPage() {
 
   return (
     <div className="login-page">
-      <form className="login-form" onSubmit={handleLogin}>
-        <input type="text" onChange={onChangeUsername} placeholder='Username' className='login-input' required />
-        <input type="password" onChange={onChangePassword} placeholder='Password' className='login-input' required />
-        <button type="submit" className="login-button">Login</button>
-      </form>
-      <p>or</p>
-      <Link to="/register">Register</Link>
+      <div className='title'>
+        <form className="login-form" onSubmit={handleLogin}>
+          <input type="text" onChange={onChangeUsername} placeholder='Username' className='login-input' required />
+          <input type="password" onChange={onChangePassword} placeholder='Password' className='login-input' required />
+          <button type="submit" className="login-button">Login</button>
+        </form>
+        <p>or</p>
+        <Link to="/register">Register</Link>
+      </div>
     </div>
   );
 }

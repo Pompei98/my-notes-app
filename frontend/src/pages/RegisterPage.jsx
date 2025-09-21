@@ -14,12 +14,14 @@ function RegisterPage() {
 
     return (
         <div className="register-page">
-            <Link to="/" className='back-to-login'><FaArrowLeft /></Link>
-            <form className="register-form">
-                <input type="text" placeholder='Username' className='register-input' required />
-                <input type="password" placeholder='Password' className='register-input' required />
-                <button type="submit" className="register-button">Register</button>
-            </form>
+            <div>
+                <Link to="/" className='back-to-login'><FaArrowLeft /></Link>
+                <form className="register-form">
+                    <input type="text" placeholder='Username' className='register-input' required />
+                    <input type="password" placeholder='Password' className='register-input' required />
+                    <button type="submit" className="register-button">Register</button>
+                </form>
+            </div>
         </div>
     );
 }
