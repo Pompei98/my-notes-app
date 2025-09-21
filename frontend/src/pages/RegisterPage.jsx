@@ -11,14 +11,39 @@ function RegisterPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const onChangeUsername = (e) => {
+        setUsername(e.target.value);
+    }
+    const onChangePassword = (e) => {
+        setPassword(e.target.value);
+    }
+
+    const handleReg = async (e) => {
+        e.preventDefault();
+        const res = await fetch(`${apiUrl}/auth/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({  }),
+        });
+
+        if (res.ok) {
+            const data = await res.json();
+            navigate('/home');
+        } else {
+            alert('none');
+        }
+    }
+
 
     return (
         <div className="register-page">
             <div>
                 <Link to="/" className='back-to-login'><FaArrowLeft /></Link>
-                <form className="register-form">
-                    <input type="text" placeholder='Username' className='register-input' required />
-                    <input type="password" placeholder='Password' className='register-input' required />
+                <form className="register-form" onSubmit={handleReg}>
+                    <input type="text" placeholder='Username' className='register-input' onChange={onChangeUsername} required />
+                    <input type="password" placeholder='Password' className='register-input'onChange={onChangePassword} required />
                     <button type="submit" className="register-button">Register</button>
                 </form>
             </div>

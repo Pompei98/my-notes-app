@@ -20,6 +20,9 @@ public class Utente {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "nome")
     private String nome;
 
@@ -35,9 +38,10 @@ public class Utente {
     public Utente() {
     }
 
-    public Utente(String username, String password, String nome, String cognome, LocalDateTime dataCreazione) {
+    public Utente(String username, String password, String email, String nome, String cognome, LocalDateTime dataCreazione) {
         this.username = username;
         this.password = password;
+        this.email = email;
         this.nome = nome;
         this.cognome = cognome;
         this.dataCreazione = dataCreazione;
@@ -97,5 +101,13 @@ public class Utente {
 
     public void setNote(List<Nota> note) {
         this.note = note;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
