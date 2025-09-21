@@ -48,8 +48,10 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody Utente registerRequest){
+    public ResponseEntity<Map<String, String>> register(@RequestBody Utente registerRequest){
         utenteService.createUtente(registerRequest);
-        return ResponseEntity.ok("Ok");
+        Map<String, String> res = new HashMap<>();
+        res.put("message", "ok");
+        return ResponseEntity.ok(res);
     }
 }
