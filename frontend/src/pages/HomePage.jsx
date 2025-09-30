@@ -34,11 +34,14 @@ function HomePage() {
                 if (!res.ok) throw new Error('Errore eliminazione');
             })
             .then(() => {
-                if (nota.idNota == selectedNote.idNota) {
-                    setIsEditing(false);
+                if (selectedNote != null) {
+                    if (nota.idNota == selectedNote.idNota) {
+                        setIsEditing(false);
+                    }
                 }
-                setNotes(prevNotes => prevNotes.filter(n => n.idNota !== nota.idNota))
-
+                setNotes(prevNotes => {const newNotes = prevNotes.filter(n => n.idNota !== nota.idNota);
+                    notesRef.current = [...newNotes];
+                    return newNotes});
             })
 
     }
@@ -86,6 +89,8 @@ function HomePage() {
             .then(data => setNotes(data))
             .then(data => console.log(data))
             .catch(err => console.error(err));
+
+
     }, [])
 
     useEffect(() => {
